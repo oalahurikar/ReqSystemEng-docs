@@ -1,0 +1,24 @@
+{
+  "id": "reference/edge-types",
+  "title": "Reference: Edge Types",
+  "description": "This reference describes all edge types (relationships) available in ReqDrivenDev. Edges define how nodes connect in the knowledge graph.",
+  "source": "@site/docs/reference/edge-types.md",
+  "sourceDirName": "reference",
+  "slug": "/reference/edge-types",
+  "permalink": "/ReqSystemEng-docs/docs/reference/edge-types",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/reference/edge-types.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Reference: Node Types",
+    "permalink": "/ReqSystemEng-docs/docs/reference/node-types"
+  },
+  "next": {
+    "title": "Search Guide",
+    "permalink": "/ReqSystemEng-docs/docs/reference/search-guide"
+  }
+}

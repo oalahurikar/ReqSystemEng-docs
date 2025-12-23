@@ -1,0 +1,143 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/ReqSystemEng-docs/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/ReqSystemEng-docs/docs",
+          "mainDocId": "README",
+          "docs": [
+            {
+              "id": "advanced/code-integration",
+              "path": "/ReqSystemEng-docs/docs/advanced/code-integration",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "advanced/legacy-import",
+              "path": "/ReqSystemEng-docs/docs/advanced/legacy-import",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "advanced/troubleshooting",
+              "path": "/ReqSystemEng-docs/docs/advanced/troubleshooting",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/introduction",
+              "path": "/ReqSystemEng-docs/docs/getting-started/introduction",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/quick-start",
+              "path": "/ReqSystemEng-docs/docs/getting-started/quick-start",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/ui-tour",
+              "path": "/ReqSystemEng-docs/docs/getting-started/ui-tour",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/constraint-management",
+              "path": "/ReqSystemEng-docs/docs/guides/constraint-management",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/creating-requirements",
+              "path": "/ReqSystemEng-docs/docs/guides/creating-requirements",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/defining-context",
+              "path": "/ReqSystemEng-docs/docs/guides/defining-context",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/error-guide",
+              "path": "/ReqSystemEng-docs/docs/guides/error-guide",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/ReqSystemEng-docs/docs/intro"
+            },
+            {
+              "id": "README",
+              "path": "/ReqSystemEng-docs/docs/"
+            },
+            {
+              "id": "reference/edge-types",
+              "path": "/ReqSystemEng-docs/docs/reference/edge-types",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/node-types",
+              "path": "/ReqSystemEng-docs/docs/reference/node-types",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/search-guide",
+              "path": "/ReqSystemEng-docs/docs/reference/search-guide",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "scenarios/drafting-first-req",
+              "path": "/ReqSystemEng-docs/docs/scenarios/drafting-first-req",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "scenarios/handling-conflicts",
+              "path": "/ReqSystemEng-docs/docs/scenarios/handling-conflicts",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "tutorial-basics/congratulations",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/congratulations"
+            },
+            {
+              "id": "tutorial-basics/create-a-blog-post",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/create-a-blog-post"
+            },
+            {
+              "id": "tutorial-basics/create-a-document",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/create-a-document"
+            },
+            {
+              "id": "tutorial-basics/create-a-page",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/create-a-page"
+            },
+            {
+              "id": "tutorial-basics/deploy-your-site",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/deploy-your-site"
+            },
+            {
+              "id": "tutorial-basics/markdown-features",
+              "path": "/ReqSystemEng-docs/docs/tutorial-basics/markdown-features"
+            },
+            {
+              "id": "tutorial-extras/manage-docs-versions",
+              "path": "/ReqSystemEng-docs/docs/tutorial-extras/manage-docs-versions"
+            },
+            {
+              "id": "tutorial-extras/translate-your-site",
+              "path": "/ReqSystemEng-docs/docs/tutorial-extras/translate-your-site"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docsSidebar": {
+              "link": {
+                "path": "/ReqSystemEng-docs/docs/getting-started/introduction",
+                "label": "getting-started/introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

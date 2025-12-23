@@ -1,0 +1,24 @@
+{
+  "id": "scenarios/drafting-first-req",
+  "title": "Scenario: Drafting Your First Requirement",
+  "description": "A real-world walkthrough of creating your first requirement in ReqDrivenDev.",
+  "source": "@site/docs/scenarios/drafting-first-req.md",
+  "sourceDirName": "scenarios",
+  "slug": "/scenarios/drafting-first-req",
+  "permalink": "/ReqSystemEng-docs/docs/scenarios/drafting-first-req",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/scenarios/drafting-first-req.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Troubleshooting",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/troubleshooting"
+  },
+  "next": {
+    "title": "Scenario: Handling Constraint Conflicts",
+    "permalink": "/ReqSystemEng-docs/docs/scenarios/handling-conflicts"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "README",
+  "title": "ReqDrivenDev Documentation",
+  "description": "Welcome to the ReqDrivenDev user documentation. This site provides guides, references, and examples for using the Requirements-Driven Development tool.",
+  "source": "@site/docs/README.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/ReqSystemEng-docs/docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/README.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,24 @@
+{
+  "id": "reference/node-types",
+  "title": "Reference: Node Types",
+  "description": "This reference describes all node types available in ReqDrivenDev. Each node type serves a specific purpose in the requirements graph.",
+  "source": "@site/docs/reference/node-types.md",
+  "sourceDirName": "reference",
+  "slug": "/reference/node-types",
+  "permalink": "/ReqSystemEng-docs/docs/reference/node-types",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/reference/node-types.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Error Guide: Understanding Validation Errors",
+    "permalink": "/ReqSystemEng-docs/docs/guides/error-guide"
+  },
+  "next": {
+    "title": "Reference: Edge Types",
+    "permalink": "/ReqSystemEng-docs/docs/reference/edge-types"
+  }
+}

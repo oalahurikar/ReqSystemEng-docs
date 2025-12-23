@@ -1,0 +1,24 @@
+{
+  "id": "advanced/legacy-import",
+  "title": "Legacy Import",
+  "description": "Import existing requirements from other tools or documents into ReqDrivenDev.",
+  "source": "@site/docs/advanced/legacy-import.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/legacy-import",
+  "permalink": "/ReqSystemEng-docs/docs/advanced/legacy-import",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/advanced/legacy-import.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Search Guide",
+    "permalink": "/ReqSystemEng-docs/docs/reference/search-guide"
+  },
+  "next": {
+    "title": "Code Integration",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/code-integration"
+  }
+}

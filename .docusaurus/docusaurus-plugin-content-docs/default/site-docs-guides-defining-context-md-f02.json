@@ -1,0 +1,24 @@
+{
+  "id": "guides/defining-context",
+  "title": "Defining Context: Jobs and Scenarios",
+  "description": "Context is critical in requirements engineering. ReqDrivenDev uses Jobs and Scenarios to provide this context.",
+  "source": "@site/docs/guides/defining-context.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/defining-context",
+  "permalink": "/ReqSystemEng-docs/docs/guides/defining-context",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/guides/defining-context.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Creating Requirements: The Drafting Loop",
+    "permalink": "/ReqSystemEng-docs/docs/guides/creating-requirements"
+  },
+  "next": {
+    "title": "Constraint Management",
+    "permalink": "/ReqSystemEng-docs/docs/guides/constraint-management"
+  }
+}

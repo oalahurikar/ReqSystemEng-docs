@@ -1,0 +1,24 @@
+{
+  "id": "guides/error-guide",
+  "title": "Error Guide: Understanding Validation Errors",
+  "description": "When the system blocks a requirement, it provides a clear error message explaining why. This guide explains all error messages and how to resolve them.",
+  "source": "@site/docs/guides/error-guide.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/error-guide",
+  "permalink": "/ReqSystemEng-docs/docs/guides/error-guide",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/guides/error-guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Constraint Management",
+    "permalink": "/ReqSystemEng-docs/docs/guides/constraint-management"
+  },
+  "next": {
+    "title": "Reference: Node Types",
+    "permalink": "/ReqSystemEng-docs/docs/reference/node-types"
+  }
+}

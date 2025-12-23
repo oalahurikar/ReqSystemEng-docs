@@ -1,0 +1,24 @@
+{
+  "id": "advanced/troubleshooting",
+  "title": "Troubleshooting",
+  "description": "Common issues and solutions when using ReqDrivenDev.",
+  "source": "@site/docs/advanced/troubleshooting.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/troubleshooting",
+  "permalink": "/ReqSystemEng-docs/docs/advanced/troubleshooting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/advanced/troubleshooting.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Code Integration",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/code-integration"
+  },
+  "next": {
+    "title": "Scenario: Drafting Your First Requirement",
+    "permalink": "/ReqSystemEng-docs/docs/scenarios/drafting-first-req"
+  }
+}

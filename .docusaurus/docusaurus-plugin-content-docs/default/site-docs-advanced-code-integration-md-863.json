@@ -1,0 +1,24 @@
+{
+  "id": "advanced/code-integration",
+  "title": "Code Integration",
+  "description": "Link requirements to code, Git commits, and implementation artifacts.",
+  "source": "@site/docs/advanced/code-integration.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/code-integration",
+  "permalink": "/ReqSystemEng-docs/docs/advanced/code-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/advanced/code-integration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Legacy Import",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/legacy-import"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/troubleshooting"
+  }
+}

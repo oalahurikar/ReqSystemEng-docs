@@ -1,0 +1,20 @@
+{
+  "id": "scenarios/handling-conflicts",
+  "title": "Scenario: Handling Constraint Conflicts",
+  "description": "A real-world example of what happens when a requirement conflicts with an existing constraint.",
+  "source": "@site/docs/scenarios/handling-conflicts.md",
+  "sourceDirName": "scenarios",
+  "slug": "/scenarios/handling-conflicts",
+  "permalink": "/ReqSystemEng-docs/docs/scenarios/handling-conflicts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/scenarios/handling-conflicts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Scenario: Drafting Your First Requirement",
+    "permalink": "/ReqSystemEng-docs/docs/scenarios/drafting-first-req"
+  }
+}

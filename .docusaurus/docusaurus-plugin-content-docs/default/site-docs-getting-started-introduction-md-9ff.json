@@ -1,0 +1,20 @@
+{
+  "id": "getting-started/introduction",
+  "title": "Introduction",
+  "description": "Welcome to ReqDrivenDev, a Requirements-Driven Development tool designed to help engineers manage complex system requirements efficiently and safely.",
+  "source": "@site/docs/getting-started/introduction.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/introduction",
+  "permalink": "/ReqSystemEng-docs/docs/getting-started/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/getting-started/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Quick Start",
+    "permalink": "/ReqSystemEng-docs/docs/getting-started/quick-start"
+  }
+}

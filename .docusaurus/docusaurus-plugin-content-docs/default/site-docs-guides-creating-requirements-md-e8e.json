@@ -1,0 +1,24 @@
+{
+  "id": "guides/creating-requirements",
+  "title": "Creating Requirements: The Drafting Loop",
+  "description": "The Drafting Loop is the core workflow for creating requirements in ReqDrivenDev. It transforms natural language input into structured, validated requirements.",
+  "source": "@site/docs/guides/creating-requirements.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/creating-requirements",
+  "permalink": "/ReqSystemEng-docs/docs/guides/creating-requirements",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/guides/creating-requirements.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "UI Tour",
+    "permalink": "/ReqSystemEng-docs/docs/getting-started/ui-tour"
+  },
+  "next": {
+    "title": "Defining Context: Jobs and Scenarios",
+    "permalink": "/ReqSystemEng-docs/docs/guides/defining-context"
+  }
+}

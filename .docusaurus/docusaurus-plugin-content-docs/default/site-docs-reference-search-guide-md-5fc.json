@@ -1,0 +1,24 @@
+{
+  "id": "reference/search-guide",
+  "title": "Search Guide",
+  "description": "ReqDrivenDev provides semantic search to help you find related requirements and prevent duplicates.",
+  "source": "@site/docs/reference/search-guide.md",
+  "sourceDirName": "reference",
+  "slug": "/reference/search-guide",
+  "permalink": "/ReqSystemEng-docs/docs/reference/search-guide",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/reference/search-guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Reference: Edge Types",
+    "permalink": "/ReqSystemEng-docs/docs/reference/edge-types"
+  },
+  "next": {
+    "title": "Legacy Import",
+    "permalink": "/ReqSystemEng-docs/docs/advanced/legacy-import"
+  }
+}

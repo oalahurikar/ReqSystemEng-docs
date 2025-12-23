@@ -1,0 +1,24 @@
+{
+  "id": "getting-started/ui-tour",
+  "title": "UI Tour",
+  "description": "ReqDrivenDev uses a split-screen layout that separates the creative process from the committed truth.",
+  "source": "@site/docs/getting-started/ui-tour.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/ui-tour",
+  "permalink": "/ReqSystemEng-docs/docs/getting-started/ui-tour",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/oalahurikar/ReqSystemEng-docs/tree/main/docs/getting-started/ui-tour.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Quick Start",
+    "permalink": "/ReqSystemEng-docs/docs/getting-started/quick-start"
+  },
+  "next": {
+    "title": "Creating Requirements: The Drafting Loop",
+    "permalink": "/ReqSystemEng-docs/docs/guides/creating-requirements"
+  }
+}
