@@ -99,5 +99,5 @@ When a constraint violation occurs:
 
 - **[Error Guide](error-guide.md)** - How to resolve constraint violations
 - **[Reference: Node Types](../reference/node-types.md)** - Complete reference for Constraint nodes
-- **[Scenarios](../scenarios/)** - Real-world examples of constraint usage
+- **[Scenarios](../scenarios/drafting-first-req.md)** - Real-world examples of constraint usage
 
