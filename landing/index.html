@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReqDrivenDev - Landing Page</title>
+</head>
+<body>
+    <div class="container">
+        <!-- KPI Tiles -->
+        <div id="kpi-tiles" class="kpi-grid"></div>
+
+        <!-- Chart 1: Waterfall - Annual Cost of Requirement Drift -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2>Annual Cost of Requirement Drift</h2>
+                <p class="subtitle">Where time + delay money goes when specs, dependencies, and tests drift out of sync.</p>
+            </div>
+            <canvas id="waterfallChart" aria-label="Annual Cost of Requirement Drift chart"></canvas>
+            <p class="chart-caption">Most teams lose the biggest money in <strong>rework</strong> and <strong>schedule slip</strong>—not in writing requirements.</p>
+        </div>
+
+        <!-- Chart 2: Donut - Issues Found Late -->
+        <div class="chart-container small">
+            <div class="chart-header">
+                <h2>Issues discovered late</h2>
+                <p class="subtitle">Late discoveries are the expensive ones.</p>
+            </div>
+            <div class="donut-wrapper">
+                <canvas id="donutChart" aria-label="Issues discovered late chart"></canvas>
+                <div class="donut-center">
+                    <span class="center-value" id="donut-center-value">Late: 32%</span>
+                </div>
+            </div>
+            <p class="chart-caption">Reduce "found late" by catching mismatches at the moment of change.</p>
+        </div>
+
+        <!-- Chart 3: Horizontal Bar - Time to Answer Impact -->
+        <div class="chart-container small">
+            <div class="chart-header">
+                <h2>Time to answer: "What does this change affect?"</h2>
+            </div>
+            <canvas id="barChart" aria-label="Time to answer impact chart"></canvas>
+            <p class="chart-caption">Turn a multi-day, multi-meeting process into a quick check.</p>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
