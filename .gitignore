@@ -11,5 +11,8 @@ dist/
 .env
 .env.*
 
+# Reference docs (local only)
+docs/
+
 # OS
 .DS_Store
