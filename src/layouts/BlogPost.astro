@@ -1,0 +1,39 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  pubDate: Date;
+  description: string;
+  author?: string;
+}
+
+const { title, pubDate, description, author } = Astro.props;
+const formattedDate = pubDate.toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <header class="mb-8">
+      <time class="text-sm text-[var(--color-text-muted)]">{formattedDate}</time>
+      {author && <span class="text-sm text-[var(--color-text-muted)]"> &middot; {author}</span>}
+      <h1 class="text-3xl font-bold mt-2">{title}</h1>
+      <p class="text-[var(--color-text-muted)] mt-2">{description}</p>
+    </header>
+    <div class="prose prose-invert prose-slate max-w-none
+      [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-4
+      [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-3
+      [&_p]:text-[var(--color-text)] [&_p]:mb-4
+      [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4
+      [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4
+      [&_code]:bg-[var(--color-surface)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm
+      [&_pre]:bg-[var(--color-surface)] [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:mb-4
+      [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-4 [&_blockquote]:italic">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
