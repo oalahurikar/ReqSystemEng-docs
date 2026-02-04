@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://oalahurikar.github.io',
-  base: '/ReqSystemEng-docs',
+  base: '/ReqSystemEng-docs/',
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
