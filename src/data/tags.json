@@ -1,0 +1,5 @@
+[
+  { "slug": "problem", "name": "Problem", "description": "Problem definition, pain points, and why current approaches fail." },
+  { "slug": "requirement", "name": "Requirement", "description": "Requirements writing, quality, traceability, and management practices." },
+  { "slug": "first-principles", "name": "First Principles", "description": "Foundational thinking, root-cause reasoning, and deriving solutions from basics." }
+]

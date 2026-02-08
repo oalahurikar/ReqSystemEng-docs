@@ -1,14 +1,16 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import TagList from '../components/TagList.astro';
 
 interface Props {
   title: string;
   pubDate: Date;
   description: string;
   author?: string;
+  tags?: string[];
 }
 
-const { title, pubDate, description, author } = Astro.props;
+const { title, pubDate, description, author, tags } = Astro.props;
 const formattedDate = pubDate.toLocaleDateString('en-us', {
   year: 'numeric',
   month: 'long',
@@ -23,6 +25,11 @@ const formattedDate = pubDate.toLocaleDateString('en-us', {
       {author && <span class="text-sm text-[var(--color-text-muted)]"> &middot; {author}</span>}
       <h1 class="text-3xl font-bold mt-2">{title}</h1>
       <p class="text-[var(--color-text-muted)] mt-2">{description}</p>
+      {tags && tags.length > 0 && (
+        <div class="mt-4">
+          <TagList tags={tags} />
+        </div>
+      )}
     </header>
     <div class="prose prose-invert prose-slate max-w-none
       [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-4

@@ -3,7 +3,7 @@ title: "Hello World"
 pubDate: 2026-02-03
 description: "Welcome to the RDD blog — where we write about requirements engineering, systems thinking, and building tools that keep requirements alive."
 author: "RDD Team"
-tags: ["announcement"]
+tags: ["first-principles"]
 ---
 
 ## Welcome

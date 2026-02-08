@@ -1,12 +1,15 @@
 ---
+import TagList from './TagList.astro';
+
 interface Props {
   title: string;
   description: string;
   pubDate: Date;
   slug: string;
+  tags?: string[];
 }
 
-const { title, description, pubDate, slug } = Astro.props;
+const { title, description, pubDate, slug, tags } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const formattedDate = pubDate.toLocaleDateString('en-us', {
   year: 'numeric',
@@ -21,4 +24,9 @@ const formattedDate = pubDate.toLocaleDateString('en-us', {
     <h3 class="text-lg font-semibold text-[var(--color-text)] mt-1">{title}</h3>
     <p class="text-sm text-[var(--color-text-muted)] mt-2">{description}</p>
   </a>
+  {tags && tags.length > 0 && (
+    <div class="mt-3">
+      <TagList tags={tags} />
+    </div>
+  )}
 </article>
