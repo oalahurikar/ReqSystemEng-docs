@@ -1,0 +1,33 @@
+---
+interface Message {
+  role: 'user' | 'copilot';
+  text: string;
+}
+
+interface Props {
+  messages: Message[];
+}
+
+const { messages } = Astro.props;
+---
+
+<div class="rounded-lg border border-[var(--color-border)] overflow-hidden">
+  {messages.map((msg) => (
+    <div class:list={[
+      'px-5 py-4',
+      msg.role === 'copilot'
+        ? 'bg-[var(--color-surface)] border-l-2 border-l-[var(--color-text)]'
+        : 'bg-[var(--color-bg)]'
+    ]}>
+      <p class:list={[
+        'text-xs font-medium uppercase tracking-wider mb-1',
+        msg.role === 'copilot' ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)]'
+      ]}>
+        {msg.role === 'copilot' ? 'Co-pilot' : 'You'}
+      </p>
+      <p class="text-sm leading-relaxed text-[var(--color-text)] m-0">
+        {msg.text}
+      </p>
+    </div>
+  ))}
+</div>

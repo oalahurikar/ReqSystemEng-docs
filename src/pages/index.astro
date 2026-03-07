@@ -1,47 +1,264 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ConvoBlock from '../components/ConvoBlock.astro';
 
 const base = import.meta.env.BASE_URL;
+
+const heroConvo = [
+  { role: 'user' as const, text: 'I need a drone that can carry 5 kg within a 2-mile radius.' },
+  { role: 'copilot' as const, text: "What's the payload, and what's the mission? Delivery, equipment mounting, or sensor packages — those drive fundamentally different designs." },
+  { role: 'user' as const, text: 'Surveying agriculture fields. Thermal imaging.' },
+  { role: 'copilot' as const, text: "Thermal cameras in this class typically weigh 150\u2013200g — your 5 kg spec may be 25x above what you need. And a 10-acre field is ~200m across, well within a fraction of your 2-mile range. Worth starting from the actual mission parameters?" },
+];
+
+const propConvo = [
+  { role: 'copilot' as const, text: "Frame arm length: ~125mm. Prop radius: 89mm. Clearance between adjacent props: 6mm.\n\n6mm is below the 15mm safety minimum. At flex and vibration — props will collide." },
+];
+
+const decisions = [
+  { decision: 'GPS failsafe — Phase 1', spec: 'Continue via dead reckoning for 30 sec' },
+  { decision: 'GPS failsafe — Phase 2', spec: 'RTL on compass heading + baro altitude' },
+  { decision: 'Home definition', spec: 'Stored launch vector' },
+  { decision: 'Return altitude', spec: 'Maintain 50m AGL' },
+  { decision: 'Accuracy budget', spec: '\u00b120m (compass + baro drift)' },
+  { decision: 'Test cases', spec: '4 defined, runnable' },
+];
+
+const domains = [
+  { name: 'Drones & UAV', desc: 'Motors, batteries, flight controllers, sensors, and airframes. Every subsystem affects three others.' },
+  { name: 'Robotics', desc: 'Actuators, power, perception, and control software sharing constraints nobody wrote down.' },
+  { name: 'IoT & Embedded', desc: 'MCU, sensors, power, enclosure. The protocol, the power, and the thermal path need to agree.' },
+  { name: 'Medical Devices', desc: 'Systems where regulatory traceability isn\'t optional. Decisions mapped to your compliance process.' },
+  { name: 'E-bikes & EV', desc: 'Battery packs, motor controllers, BMS, drivetrains. A voltage change ripples through everything.' },
+];
 ---
 
-<BaseLayout title="RDD — Requirements Driven Development">
-  <section class="max-w-3xl mx-auto px-6 py-24 text-center">
-    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
-      Requirements Driven Development
+<BaseLayout
+  title="RDD — Talk through your design. Catch what you missed."
+  description="An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and generates structured specs — from conversation."
+>
+
+  <!-- Hero -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-6 text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+      Talk through your design.<br/>Catch what you missed.
     </h1>
-    <p class="text-lg text-[var(--color-text-muted)] mt-6 max-w-2xl mx-auto">
-      Ship safe machines without administrative paralysis. Requirements that stay alive, connected, and meaningful — without manual babysitting.
+    <p class="text-lg text-[var(--color-text-muted)] mt-4 max-w-xl mx-auto leading-relaxed">
+      An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and generates structured specs — from conversation.
     </p>
-    <div class="flex gap-4 justify-center mt-10">
-      <a
-        href={`${base}blog/`}
-        class="px-6 py-3 bg-[var(--color-accent)] text-[var(--color-bg)] font-medium rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors"
-      >
-        Read the Blog
+    <div class="mt-8">
+      <a href="#pricing" class="inline-block px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors text-lg">
+        Try a free session
       </a>
     </div>
   </section>
 
-  <section class="max-w-4xl mx-auto px-6 pb-24">
-    <div class="grid sm:grid-cols-3 gap-6">
-      <div class="border border-[var(--color-border)] rounded-lg p-6">
-        <h3 class="font-semibold text-[var(--color-accent)]">Active, Not Passive</h3>
-        <p class="text-sm text-[var(--color-text-muted)] mt-2">
-          Block bad operations at the gate. No more red flags nobody clicks.
-        </p>
-      </div>
-      <div class="border border-[var(--color-border)] rounded-lg p-6">
-        <h3 class="font-semibold text-[var(--color-accent)]">Graph-Native</h3>
-        <p class="text-sm text-[var(--color-text-muted)] mt-2">
-          Everything is nodes and edges. Relationships are first-class citizens.
-        </p>
-      </div>
-      <div class="border border-[var(--color-border)] rounded-lg p-6">
-        <h3 class="font-semibold text-[var(--color-accent)]">Interview First</h3>
-        <p class="text-sm text-[var(--color-text-muted)] mt-2">
-          Guide users through questions before accepting answers. Conversation feel, structured output.
-        </p>
+  <!-- Demo conversation -->
+  <section class="max-w-2xl mx-auto px-6 pb-6">
+    <ConvoBlock messages={heroConvo} />
+  </section>
+
+  <!-- Problem -->
+  <section class="py-6">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight">
+        You know your components.<br/>You're missing the spaces between.
+      </h2>
+      <p class="text-[var(--color-text-muted)] mt-4 leading-relaxed">
+        Engineers think one component at a time. Failures live in the connections — where the battery meets the motor, where the sensor talks to the MCU, where firmware assumes a voltage the hardware doesn't deliver.
+      </p>
+      <p class="text-[var(--color-text-muted)] mt-3 leading-relaxed">
+        A typical cross-domain system has dozens of these boundaries. Engineers define 2–3 parameters at each one. The other 4–5 surface at integration — when fixing them costs $5K–$50K and 6 weeks.
+      </p>
+      <p class="text-[var(--color-text)] mt-3 leading-relaxed">
+        The co-pilot catches those gaps while you're still talking.
+      </p>
+      <p class="text-sm text-[var(--color-text-muted)] mt-4 opacity-60">
+        We're not a PLM. Not replacing your CAD or BOM tool. We're the thinking layer before all of that — where decisions get made and where the expensive mistakes happen.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-6">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-6">
+        Think out loud. Get structured output.
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-text-muted)] mb-1">Step 1</p>
+          <h3 class="text-lg font-semibold mb-1">Describe your project</h3>
+          <p class="text-[var(--color-text-muted)]">
+            Talk about what you're building in plain language. No forms, no modeling syntax, no "shall" statements.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-text-muted)] mb-1">Step 2</p>
+          <h3 class="text-lg font-semibold mb-1">The co-pilot sharpens and captures</h3>
+          <p class="text-[var(--color-text-muted)]">
+            It asks the questions your design review would ask — but earlier, and without missing anything. Vague specs get sharpened. Premature decisions get challenged. Dependencies get tracked.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-text-muted)] mb-1">Step 3</p>
+          <h3 class="text-lg font-semibold mb-1">Your decisions, structured</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">
+            Every decision tracked with specs, rationale, and dependencies. Change one thing — see what else is affected.
+          </p>
+
+          <p class="text-sm text-[var(--color-text-muted)] mb-2">
+            Four rounds of conversation. One vague word — "robust autopilot" — becomes testable specs:
+          </p>
+          <div class="overflow-x-auto rounded-lg border border-[var(--color-border)]">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-[var(--color-surface)]">
+                  <th class="text-left px-4 py-2.5 font-semibold text-[var(--color-text)]">Decision</th>
+                  <th class="text-left px-4 py-2.5 font-semibold text-[var(--color-text)]">Spec</th>
+                </tr>
+              </thead>
+              <tbody>
+                {decisions.map((row) => (
+                  <tr class="border-t border-[var(--color-border)]">
+                    <td class="px-4 py-2 font-medium text-[var(--color-text)]">{row.decision}</td>
+                    <td class="px-4 py-2 text-[var(--color-text-muted)]">{row.spec}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Artifacts -->
+  <section class="py-6">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-2">
+        Real engineering artifacts. Not chat logs.
+      </h2>
+      <p class="text-center text-[var(--color-text-muted)] mb-4">
+        Generated from your conversation. Structured. Searchable. Ready for design reviews.
+      </p>
+
+      <div class="space-y-4">
+        <div class="rounded-lg border border-[var(--color-border)] p-5">
+          <h3 class="font-semibold text-[var(--color-text)] mb-1">Decision Document</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            Every decision with specs, rationale, rejected alternatives, and dependencies.
+          </p>
+        </div>
+        <div class="rounded-lg border border-[var(--color-border)] p-5">
+          <h3 class="font-semibold text-[var(--color-text)] mb-1">Interface Control Document</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            Every boundary where responsibility transfers — connectors, signals, data formats, thermal paths.
+          </p>
+        </div>
+        <div class="rounded-lg border border-[var(--color-border)] p-5">
+          <h3 class="font-semibold text-[var(--color-text)] mb-1">Dependency Map</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            What connects to what, and what breaks when something changes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiator -->
+  <section class="py-6">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight">
+        This isn't ChatGPT with an engineering prompt.
+      </h2>
+      <p class="text-[var(--color-text-muted)] mt-4 leading-relaxed">
+        ChatGPT can answer engineering questions. It can't track 30 decisions, flag when decision #27 contradicts decision #4, or catch that two engineers made independently valid choices that are physically incompatible.
+      </p>
+
+      <div class="mt-6 rounded-lg border border-[var(--color-border)] p-5">
+        <p class="text-sm text-[var(--color-text-muted)] mb-3">
+          One engineer specs 7-inch props for hover efficiency. Another specs a 250mm frame to fit a Pelican case. Both correct in isolation.
+        </p>
+        <ConvoBlock messages={propConvo} />
+        <p class="text-sm text-[var(--color-text-muted)] mt-3">
+          Neither made a mistake. The conflict only exists at the intersection. Without structured tracking, this surfaces at assembly.
+        </p>
+      </div>
+
+      <p class="text-[var(--color-text-muted)] mt-6 leading-relaxed">
+        The co-pilot doesn't make decisions. You do. It asks questions, flags gaps, and surfaces conflicts. You verify and decide.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-6">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-4">
+        If your system crosses domains, this is for you.
+      </h2>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {domains.map((d) => (
+          <div class="rounded-lg border border-[var(--color-border)] p-4">
+            <h3 class="font-semibold text-[var(--color-text)] mb-1">{d.name}</h3>
+            <p class="text-sm text-[var(--color-text-muted)]">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-[var(--color-text-muted)] mt-6">
+        5+ interacting components across 2+ domains? You're already missing connections.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-6">
+    <div class="max-w-lg mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold tracking-tight mb-6">
+        Try it on a real project.
+      </h2>
+
+      <div class="rounded-lg border border-[var(--color-border)] overflow-hidden mb-6">
+        <div class="flex">
+          <div class="flex-1 px-6 py-5 bg-[var(--color-surface)]">
+            <p class="text-sm text-[var(--color-text-muted)]">First session</p>
+            <p class="text-3xl font-bold text-[var(--color-text)] mt-1">Free</p>
+          </div>
+          <div class="flex-1 px-6 py-5 border-l border-[var(--color-border)]">
+            <p class="text-sm text-[var(--color-text-muted)]">After that</p>
+            <p class="text-3xl font-bold text-[var(--color-text)] mt-1">$29</p>
+            <p class="text-xs text-[var(--color-text-muted)]">per session</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-[var(--color-text-muted)] mb-2">
+        One session. One project. No subscription.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="py-6">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold tracking-tight mb-4">
+        Your next design review will wish you'd done this first.
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="https://reqsystemeng-production.up.railway.app" class="inline-block px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors">
+          Start a free session
+        </a>
+        <a href="#" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
+          Questions? Book a 15-minute call
+        </a>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
