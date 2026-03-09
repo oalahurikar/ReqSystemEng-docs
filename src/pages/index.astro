@@ -11,31 +11,30 @@ const heroConvo = [
   { role: 'copilot' as const, text: "Thermal cameras in this class typically weigh 150\u2013200g — your 5 kg spec may be 25x above what you need. And a 10-acre field is ~200m across, well within a fraction of your 2-mile range. Worth starting from the actual mission parameters?" },
 ];
 
+const thermoConvo = [
+  { role: 'user' as const, text: 'I want to create a touchless thermometer for children.' },
+  { role: 'copilot' as const, text: "What problem are you trying to solve? Is this for home use, clinical settings, or something else? And what does success look like — parents checking fever at bedtime, or nurses triaging 50 kids/hour?" },
+  { role: 'user' as const, text: 'Within \u00b10.5\u00b0F, toddler squirming but cooperating for 2\u20133 seconds.' },
+  { role: 'copilot' as const, text: "Decision 1: Measurement Accuracy\n\u251c\u2500 Spec: \u00b10.5\u00b0F (\u00b10.28\u00b0C) across 95\u2013104\u00b0F range\n\u251c\u2500 Test: Calibrated reference vs device on water bath at 98.6\u00b0F, 100.4\u00b0F, 102\u00b0F\n\u2514\u2500 Status: Captured\n\nDecision 2: Measurement Time Window\n\u251c\u2500 Spec: Complete reading in \u22643 seconds from trigger\n\u251c\u2500 Test: Stopwatch from button press to displayed result, 20 trials\n\u2514\u2500 Conditional: Assumes forehead aim (not ear canal)" },
+];
+
 const propConvo = [
-  { role: 'copilot' as const, text: "Frame arm length: ~125mm. Prop radius: 89mm. Clearance between adjacent props: 6mm.\n\n6mm is below the 15mm safety minimum. At flex and vibration — props will collide." },
+  { role: 'copilot' as const, text: "Frame arm length: ~125mm. Prop radius: 89mm. Clearance between adjacent props: 6mm.\n\n6mm is below the 15mm safety minimum. At flex and vibration \u2014 props will collide." },
 ];
 
 const decisions = [
-  { decision: 'GPS failsafe — Phase 1', spec: 'Continue via dead reckoning for 30 sec' },
-  { decision: 'GPS failsafe — Phase 2', spec: 'RTL on compass heading + baro altitude' },
+  { decision: 'GPS failsafe \u2014 Phase 1', spec: 'Continue via dead reckoning for 30 sec' },
+  { decision: 'GPS failsafe \u2014 Phase 2', spec: 'RTL on compass heading + baro altitude' },
   { decision: 'Home definition', spec: 'Stored launch vector' },
   { decision: 'Return altitude', spec: 'Maintain 50m AGL' },
   { decision: 'Accuracy budget', spec: '\u00b120m (compass + baro drift)' },
   { decision: 'Test cases', spec: '4 defined, runnable' },
 ];
-
-const domains = [
-  { name: 'Drones & UAV', desc: 'Motors, batteries, flight controllers, sensors, and airframes. Every subsystem affects three others.' },
-  { name: 'Robotics', desc: 'Actuators, power, perception, and control software sharing constraints nobody wrote down.' },
-  { name: 'IoT & Embedded', desc: 'MCU, sensors, power, enclosure. The protocol, the power, and the thermal path need to agree.' },
-  { name: 'Medical Devices', desc: 'Systems where regulatory traceability isn\'t optional. Decisions mapped to your compliance process.' },
-  { name: 'E-bikes & EV', desc: 'Battery packs, motor controllers, BMS, drivetrains. A voltage change ripples through everything.' },
-];
 ---
 
 <BaseLayout
   title="RDD — Talk through your design. Catch what you missed."
-  description="An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and generates structured specs — from conversation."
+  description="An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and captures what you decided, why, and what depends on it — from conversation."
 >
 
   <!-- Hero -->
@@ -44,7 +43,7 @@ const domains = [
       Talk through your design.<br/>Catch what you missed.
     </h1>
     <p class="text-lg text-[var(--color-text-muted)] mt-4 max-w-xl mx-auto leading-relaxed">
-      An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and generates structured specs — from conversation.
+      An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and captures what you decided, why, and what depends on it — from conversation.
     </p>
     <div class="mt-8">
       <a href="#pricing" class="inline-block px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors text-lg">
@@ -133,6 +132,58 @@ const domains = [
           </div>
         </div>
       </div>
+
+      <!-- Real session output -->
+      <div class="mt-8">
+        <p class="text-sm text-[var(--color-text-muted)] mb-2">
+          Real session, 3 minutes in. Engineer said 6 words. Co-pilot captured 2 testable decisions:
+        </p>
+        <ConvoBlock messages={thermoConvo} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Caught before hardware -->
+  <section class="py-6">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tight mb-4">
+        Caught before hardware.
+      </h2>
+      <p class="text-[var(--color-text-muted)] leading-relaxed">
+        An engineer specified 7-inch propellers for hover efficiency on an agricultural drone. Another specified a 250mm folding frame to fit a Pelican case. Both choices correct in isolation.
+      </p>
+
+      <div class="mt-4">
+        <ConvoBlock messages={propConvo} />
+      </div>
+
+      <p class="text-[var(--color-text-muted)] mt-4 leading-relaxed">
+        Neither made a mistake. The conflict only exists at the intersection.
+      </p>
+
+      <div class="mt-4 rounded-lg border border-[var(--color-border)] overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[var(--color-surface)]">
+              <th class="text-left px-4 py-2.5 font-semibold text-[var(--color-text)]"></th>
+              <th class="text-left px-4 py-2.5 font-semibold text-[var(--color-text)]">Without co-pilot</th>
+              <th class="text-left px-4 py-2.5 font-semibold text-[var(--color-text)]">With co-pilot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-[var(--color-border)]">
+              <td class="px-4 py-2 font-medium text-[var(--color-text)]">When discovered</td>
+              <td class="px-4 py-2 text-[var(--color-text-muted)]">Assembly (week 6)</td>
+              <td class="px-4 py-2 text-[var(--color-text-muted)]">Conversation (minute 15)</td>
+            </tr>
+            <tr class="border-t border-[var(--color-border)]">
+              <td class="px-4 py-2 font-medium text-[var(--color-text)]">Cost</td>
+              <td class="px-4 py-2 text-[var(--color-text-muted)]">~$2K + 3 weeks</td>
+              <td class="px-4 py-2 text-[var(--color-text-muted)]">$0 + 30 seconds</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -178,18 +229,7 @@ const domains = [
       <p class="text-[var(--color-text-muted)] mt-4 leading-relaxed">
         ChatGPT can answer engineering questions. It can't track 30 decisions, flag when decision #27 contradicts decision #4, or catch that two engineers made independently valid choices that are physically incompatible.
       </p>
-
-      <div class="mt-6 rounded-lg border border-[var(--color-border)] p-5">
-        <p class="text-sm text-[var(--color-text-muted)] mb-3">
-          One engineer specs 7-inch props for hover efficiency. Another specs a 250mm frame to fit a Pelican case. Both correct in isolation.
-        </p>
-        <ConvoBlock messages={propConvo} />
-        <p class="text-sm text-[var(--color-text-muted)] mt-3">
-          Neither made a mistake. The conflict only exists at the intersection. Without structured tracking, this surfaces at assembly.
-        </p>
-      </div>
-
-      <p class="text-[var(--color-text-muted)] mt-6 leading-relaxed">
+      <p class="text-[var(--color-text-muted)] mt-3 leading-relaxed">
         The co-pilot doesn't make decisions. You do. It asks questions, flags gaps, and surfaces conflicts. You verify and decide.
       </p>
     </div>
@@ -197,23 +237,43 @@ const domains = [
 
   <!-- Who it's for -->
   <section class="py-6">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-3xl font-bold tracking-tight text-center mb-4">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold tracking-tight mb-4">
         If your system crosses domains, this is for you.
       </h2>
-
-      <div class="grid gap-3 sm:grid-cols-2">
-        {domains.map((d) => (
-          <div class="rounded-lg border border-[var(--color-border)] p-4">
-            <h3 class="font-semibold text-[var(--color-text)] mb-1">{d.name}</h3>
-            <p class="text-sm text-[var(--color-text-muted)]">{d.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <p class="text-center text-sm text-[var(--color-text-muted)] mt-6">
-        5+ interacting components across 2+ domains? You're already missing connections.
+      <p class="text-[var(--color-text-muted)] leading-relaxed">
+        Built for projects where mechanical, electrical, and software interact — drones, robots, medical devices, anything with 10+ components that talk to each other.
       </p>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="py-6">
+    <div class="max-w-2xl mx-auto px-6 space-y-3">
+      <div class="rounded-lg border border-[var(--color-border)] p-5">
+        <p class="text-[var(--color-text)] leading-relaxed italic">
+          "I had the props and frame specced on the same page and still missed it. The co-pilot caught that my 7-inch props left 6mm clearance on a 250mm frame — they'd clip in any crosswind. That's a $2K carbon fiber reorder I didn't have to make."
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)] mt-3">
+          — Drone engineer, agricultural survey project
+        </p>
+      </div>
+      <div class="rounded-lg border border-[var(--color-border)] p-5">
+        <p class="text-[var(--color-text)] leading-relaxed italic">
+          "I said 10 pounds max and 12-hour runtime in the same breath. Seemed reasonable. The co-pilot did the math I hadn't — the battery alone could weigh 10 pounds. I would have gotten to prototyping before realizing the weight budget was broken."
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)] mt-3">
+          — Embedded systems engineer, roadside safety device
+        </p>
+      </div>
+      <div class="rounded-lg border border-[var(--color-border)] p-5">
+        <p class="text-[var(--color-text)] leading-relaxed italic">
+          "I didn't realize the motor change affected the thermal budget until the co-pilot showed me. I would have found that at integration — three weeks and a board respin later."
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)] mt-3">
+          — Hardware engineer, validation session
+        </p>
+      </div>
     </div>
   </section>
 
@@ -233,13 +293,13 @@ const domains = [
           <div class="flex-1 px-6 py-5 border-l border-[var(--color-border)]">
             <p class="text-sm text-[var(--color-text-muted)]">After that</p>
             <p class="text-3xl font-bold text-[var(--color-text)] mt-1">$29</p>
-            <p class="text-xs text-[var(--color-text-muted)]">per session</p>
+            <p class="text-xs text-[var(--color-text-muted)]">per month</p>
           </div>
         </div>
       </div>
 
       <p class="text-[var(--color-text-muted)] mb-2">
-        One session. One project. No subscription.
+        One session. One project. $29 per month.
       </p>
     </div>
   </section>
@@ -250,14 +310,9 @@ const domains = [
       <h2 class="text-2xl font-bold tracking-tight mb-4">
         Your next design review will wish you'd done this first.
       </h2>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-        <a href="https://reqsystemeng-production.up.railway.app" class="inline-block px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors">
-          Start a free session
-        </a>
-        <a href="#" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
-          Questions? Book a 15-minute call
-        </a>
-      </div>
+      <a href="https://reqsystemeng-production.up.railway.app" class="inline-block px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors">
+        Start a free session
+      </a>
     </div>
   </section>
 

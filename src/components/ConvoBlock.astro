@@ -25,7 +25,7 @@ const { messages } = Astro.props;
       ]}>
         {msg.role === 'copilot' ? 'Co-pilot' : 'You'}
       </p>
-      <p class="text-sm leading-relaxed text-[var(--color-text)] m-0">
+      <p class="text-sm leading-relaxed text-[var(--color-text)] m-0 whitespace-pre-line">
         {msg.text}
       </p>
     </div>
