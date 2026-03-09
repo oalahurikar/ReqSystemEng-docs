@@ -135,7 +135,7 @@ DOORS manages documents. We manage a conversation. DOORS requires you to write f
 
 ### Above the fold
 - **Headline:** "Talk through your design. Catch what you missed."
-- **Subhead:** "An AI co-pilot for hardware engineers. It captures your decisions, flags gaps at boundaries, and generates structured specs — from conversation."
+- **Subhead:** "Talk through your design with an AI that listens like an engineer. It captures your decisions, flags gaps at the boundaries, and tracks what you decided, why, and what depends on it."
 - **CTA:** "Try a session — $29"
 - **Visual:** Before/after. Left: messy notes, vague specs. Right: structured decision table with specs, tests, dependencies, and flagged gaps.
 
@@ -183,8 +183,35 @@ Sentences to test in conversations and content. Track which ones make people lea
 
 ---
 
+## Naming & Terminology Rules
+
+### "AI co-pilot" — don't lead with it
+
+"AI co-pilot" describes the mechanism (AI that assists). It doesn't describe the value (catches what you missed at the boundaries). Every AI tool calls itself a co-pilot — it's noise, not differentiation.
+
+**Rule:** First mention = what it does. Subsequent mentions = "it" or "the tool" or lowercase "co-pilot" as shorthand. Never use "AI co-pilot" as the leading descriptor or category label.
+
+| Instead of | Say |
+|---|---|
+| "An AI co-pilot for hardware engineers" | "Talk through your design with an AI that listens like an engineer" |
+| "The co-pilot captures decisions and flags gaps" | "It captures your decisions and flags gaps at the interfaces" |
+| "AI co-pilot that turns conversations into..." | "Turn your design conversation into structured decisions, specs, and an ICD" |
+
+Lowercase "co-pilot" is fine in body text after the reader already knows what the tool is ("the co-pilot flagged...", "without co-pilot / with co-pilot").
+
+### "RDD" — keep unexpanded or use "Rapid Design Decisions"
+
+Never expand to "Requirements Driven Development." The word "requirements" signals DOORS/Jama and compliance paperwork — the opposite of our positioning. If expansion is needed, use "Rapid Design Decisions."
+
+### "Specs" vs "decisions"
+
+Engineers don't "write requirements" or "generate specs." They make decisions. Use their language: "captures your decisions," "tracks what you decided," not "generates structured specs."
+
+---
+
 ## Change Log
 
 | Date | Change | Rationale |
 |------|--------|-----------|
 | 2026-03-04 | Created | Consolidated pitch, value hierarchy, promise boundary, objection handling, and landing page structure from strategy sessions. |
+| 2026-03-09 | Added naming rules | Drop "AI co-pilot" as leading label, codify "Rapid Design Decisions" over "Requirements Driven Development," prefer "decisions" over "specs." |
