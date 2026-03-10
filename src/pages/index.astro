@@ -23,12 +23,10 @@ const propConvo = [
 ];
 
 const decisions = [
-  { decision: 'GPS failsafe \u2014 Phase 1', spec: 'Continue via dead reckoning for 30 sec' },
-  { decision: 'GPS failsafe \u2014 Phase 2', spec: 'RTL on compass heading + baro altitude' },
-  { decision: 'Home definition', spec: 'Stored launch vector' },
-  { decision: 'Return altitude', spec: 'Maintain 50m AGL' },
-  { decision: 'Accuracy budget', spec: '\u00b120m (compass + baro drift)' },
-  { decision: 'Test cases', spec: '4 defined, runnable' },
+  { decision: 'Measurement accuracy', spec: '\u00b10.5\u00b0F (\u00b10.28\u00b0C) across 95\u2013104\u00b0F' },
+  { decision: 'Measurement time', spec: 'Complete reading in \u22643 seconds' },
+  { decision: 'Target mode', spec: 'Forehead (non-contact)' },
+  { decision: 'Test protocol', spec: 'Calibrated reference at 98.6\u00b0F, 100.4\u00b0F, 102\u00b0F' },
 ];
 ---
 
@@ -110,7 +108,7 @@ const decisions = [
           </p>
 
           <p class="text-sm text-[var(--color-text-muted)] mb-2">
-            Four rounds of conversation. One vague word — "robust autopilot" — becomes testable specs:
+            One sentence — "a touchless thermometer for children" — becomes testable decisions in four exchanges:
           </p>
           <div class="overflow-x-auto rounded-lg border border-[var(--color-border)]">
             <table class="w-full text-sm">
