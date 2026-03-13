@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="RDD — You're on the list"
+  description="Thanks for joining the waitlist. We'll reach out when your spot opens."
+  ctaMode="waitlist"
+>
+  <section class="max-w-2xl mx-auto px-6 pt-12 pb-6 text-center">
+    <h1 class="text-4xl font-bold tracking-tight">
+      You're on the list.
+    </h1>
+    <p class="text-lg text-[var(--color-text-muted)] mt-4">
+      We'll reach out when your spot opens.
+    </p>
+
+    <!-- Video placeholder -->
+    <div class="mt-4 rounded-lg border border-[var(--color-border)] p-5">
+      <div class="flex items-center justify-center h-48 bg-[var(--color-surface)] rounded">
+        <p class="text-sm text-[var(--color-text-muted)]">
+          Video coming soon — a 2-min walkthrough of what a session looks like.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-4 text-sm text-[var(--color-text-muted)]">
+      While you wait, check out the <a href={`${base}blog/`} class="underline hover:text-[var(--color-accent)]">blog</a> for more on cross-domain engineering.
+    </p>
+  </section>
+</BaseLayout>
