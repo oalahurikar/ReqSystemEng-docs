@@ -73,9 +73,13 @@ const base = import.meta.env.BASE_URL;
     const form = document.getElementById('waitlist-form');
     const errorEl = document.getElementById('form-error');
 
+    const submitBtn = form.querySelector('button[type="submit"]');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorEl.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
 
       const formData = new URLSearchParams(new FormData(form));
 
@@ -92,10 +96,14 @@ const base = import.meta.env.BASE_URL;
         } else {
           errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
           errorEl.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Get Early Access';
         }
       } catch (err) {
         errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
         errorEl.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get Early Access';
       }
     });
   });
