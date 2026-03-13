@@ -1,0 +1,102 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section id="waitlist" class="py-6">
+  <div class="max-w-lg mx-auto px-6">
+    <div class="rounded-lg border border-[var(--color-border)] p-5">
+      <h3 class="text-lg font-semibold text-center mb-4">Join the waitlist</h3>
+
+      <form id="waitlist-form" class="space-y-3">
+        <div>
+          <label for="email" class="block text-sm font-medium text-[var(--color-text)] mb-1">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus:outline-none focus:border-[var(--color-accent)]"
+          />
+        </div>
+
+        <div>
+          <label for="building" class="block text-sm font-medium text-[var(--color-text)] mb-1">What are you building?</label>
+          <textarea
+            id="building"
+            name="building"
+            required
+            rows="2"
+            class="w-full px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus:outline-none focus:border-[var(--color-accent)] resize-y"
+          ></textarea>
+        </div>
+
+        <div>
+          <label for="headache" class="block text-sm font-medium text-[var(--color-text)] mb-1">Biggest integration headache right now?</label>
+          <textarea
+            id="headache"
+            name="headache"
+            required
+            rows="2"
+            class="w-full px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus:outline-none focus:border-[var(--color-accent)] resize-y"
+          ></textarea>
+        </div>
+
+        <input type="hidden" id="utm-source" name="utm_source" value="" />
+
+        <button
+          type="submit"
+          class="w-full px-8 py-3 bg-[var(--color-accent)] text-[var(--color-btn-text)] font-semibold rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors text-lg"
+        >
+          Get Early Access
+        </button>
+
+        <p id="form-error" class="text-sm text-red-600 text-center hidden"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Pass base URL to client-side JS via data attribute (define:vars does NOT work as JS vars in Astro 5) -->
+<div id="waitlist-config" data-base={base} class="hidden"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const base = document.getElementById('waitlist-config').dataset.base;
+
+    // UTM capture
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source') || '';
+    document.getElementById('utm-source').value = utmSource;
+
+    // Form submission
+    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+    const form = document.getElementById('waitlist-form');
+    const errorEl = document.getElementById('form-error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.classList.add('hidden');
+
+      const formData = new URLSearchParams(new FormData(form));
+
+      try {
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData,
+        });
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+          window.location.href = base + 'robotics-thanks/';
+        } else {
+          errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
+          errorEl.classList.remove('hidden');
+        }
+      } catch (err) {
+        errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
+        errorEl.classList.remove('hidden');
+      }
+    });
+  });
+</script>
