@@ -6,9 +6,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  ctaMode?: 'app' | 'waitlist';
 }
 
-const { title, description = 'Talk through your design with an AI that listens like an engineer. It captures your decisions, flags gaps at the boundaries, and tracks what you decided, why, and what depends on it.' } = Astro.props;
+const { title, description = 'Talk through your design with an AI that listens like an engineer. It captures your decisions, flags gaps at the boundaries, and tracks what you decided, why, and what depends on it.', ctaMode } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -22,7 +23,7 @@ const base = import.meta.env.BASE_URL;
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    <Header />
+    <Header ctaMode={ctaMode} />
     <main class="flex-1">
       <slot />
     </main>
