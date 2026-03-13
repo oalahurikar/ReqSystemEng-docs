@@ -69,7 +69,7 @@ const base = import.meta.env.BASE_URL;
     document.getElementById('utm-source').value = utmSource;
 
     // Form submission
-    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxr0i1VCKJfYbagwSBoe4e5JIuIGjnIikyPOnWeKCDk7zJkkI-btmUPvTXTGjQ9n06GOw/exec';
     const form = document.getElementById('waitlist-form');
     const errorEl = document.getElementById('form-error');
 
@@ -84,21 +84,14 @@ const base = import.meta.env.BASE_URL;
       const formData = new URLSearchParams(new FormData(form));
 
       try {
-        const response = await fetch(APPS_SCRIPT_URL, {
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          mode: 'no-cors',
           body: formData,
         });
-        const data = await response.json();
-
-        if (data.status === 'ok') {
-          window.location.href = base + 'robotics-thanks/';
-        } else {
-          errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
-          errorEl.classList.remove('hidden');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Get Early Access';
-        }
+        // Apps Script redirects cross-origin, so we can't read the response.
+        // Data is sent regardless — redirect optimistically.
+        window.location.href = base + 'robotics-thanks/';
       } catch (err) {
         errorEl.textContent = 'Something went wrong. Try again or email omkar@reqsystemeng.com';
         errorEl.classList.remove('hidden');
