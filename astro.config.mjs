@@ -4,8 +4,7 @@ import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://oalahurikar.github.io',
-  base: '/ReqSystemEng-docs/',
+  site: 'https://merudynamics.com',
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
