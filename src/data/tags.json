@@ -1,5 +1,6 @@
 [
   { "slug": "problem", "name": "Problem", "description": "Problem definition, pain points, and why current approaches fail." },
   { "slug": "requirement", "name": "Requirement", "description": "Requirements writing, quality, traceability, and management practices." },
-  { "slug": "first-principles", "name": "First Principles", "description": "Foundational thinking, root-cause reasoning, and deriving solutions from basics." }
+  { "slug": "first-principles", "name": "First Principles", "description": "Foundational thinking, root-cause reasoning, and deriving solutions from basics." },
+  { "slug": "robotics", "name": "Robotics", "description": "ROS 2, sensor fusion, sim-to-real, and cross-domain integration in robotic systems." }
 ]
